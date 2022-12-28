@@ -1,6 +1,7 @@
-class Pila<T> {
-    // Lista mutable de elementos de cualquier tipo
-    private val elementos = mutableListOf<T>()
+class Pila<T>(
+    private val elementos: MutableList<T> = mutableListOf<T>()
+) : Iterador<T> {
+
 
     // devuelve el tamano de la lista
     private fun sizeList() : Int = this.elementos.size
@@ -28,4 +29,30 @@ class Pila<T> {
     }
 
     override fun toString() = this.elementos.toString()
+}
+
+
+
+fun main() {
+    val primerElemento = 1
+    val segundoElemento = "hola"
+    val tercerElemento = 3
+    val cuartoElemento = true
+
+    val elementos = Pila(mutableListOf<Any>())
+
+    elementos.push(primerElemento)
+    elementos.push(segundoElemento)
+    elementos.push(tercerElemento)
+    elementos.push(cuartoElemento)
+
+    println("El primer elemento de la Pila es: ${elementos.tope()}")
+
+    println(elementos.vacia())
+
+    println(elementos)
+
+    println("El ultimo elemento de la Pila es: ${elementos.pop()}")
+
+
 }
