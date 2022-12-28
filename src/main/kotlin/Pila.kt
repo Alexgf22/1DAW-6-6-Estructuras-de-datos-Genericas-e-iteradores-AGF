@@ -7,7 +7,7 @@ class Pila<T> {
 
 
     // devuelve el elemento en la cabeza de la pila.
-    fun tope(): T = this.elementos.first()
+    fun tope(): T? = this.elementos.first()
 
 
     // inserta en la lista el elemento que se le pasa como parametro
@@ -19,6 +19,13 @@ class Pila<T> {
     // devuelve el ultimo elemento de la lista
     fun pop() : T = this.elementos.removeAt(this.elementos.lastIndex)
 
+
+    /* si esta vacia (tope es nulo, o tamano es 0) o
+       llena (si existe tamano maximo)
+    */
+    fun vacia(): Boolean {
+        return sizeList() == 0 || tope() == null
+    }
 
     override fun toString() = this.elementos.toString()
 }
