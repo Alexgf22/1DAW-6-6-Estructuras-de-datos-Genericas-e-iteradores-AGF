@@ -28,6 +28,14 @@ class Pila<T>(
         return sizeList() == 0 || tope() == null
     }
 
+    /*override fun recorrido(elementos: MutableList<T>) {
+        super.recorrido(elementos)
+    }*/
+
+    fun reverse(): MutableList<T> {
+        return (elementos).asReversed()
+    }
+
     override fun toString() = this.elementos.toString()
 }
 
@@ -53,6 +61,8 @@ fun main() {
     println(elementos)
 
     println("El ultimo elemento de la Pila es: ${elementos.pop()}")
+
+    println("La lista al reves seria: ${elementos.reverse()}")
 
 
 }
