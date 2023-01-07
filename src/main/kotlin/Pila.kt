@@ -42,6 +42,23 @@ class Pila<T>(
 
 
 fun main() {
+
+    /* Prueba con if y el equals para comprobar si la cadena al reves es igual
+       a la cadena al reves pero pasandole esta vez la funcion para darle la vuelta.
+     */
+
+    val numbers = Pila(mutableListOf<Any>("one", "two", "three", "four"))
+    val numbersRev = numbers.reverse()
+    if (!listOf("four", "three", "two", "one").equals(numbersRev))
+        println("Error")
+    else
+        println("Correcto")
+    println(numbersRev)
+
+
+    println("A continuacion se realizara la segunda prueba")
+    /* Segunda prueba probando a meter elementos, sacar el primer elemento de la pila,
+    * eliminar elemento, darle la vuelta a la pila y comprobar tambien si esta vacia */
     val primerElemento = 1
     val segundoElemento = "hola"
     val tercerElemento = 3
@@ -63,6 +80,7 @@ fun main() {
     println("El ultimo elemento de la Pila es: ${elementos.pop()}")
 
     println("La lista al reves seria: ${elementos.reverse()}")
+
 
 
 }
