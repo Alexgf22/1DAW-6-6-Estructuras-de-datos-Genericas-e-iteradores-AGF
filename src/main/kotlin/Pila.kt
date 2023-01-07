@@ -33,11 +33,24 @@ class Pila<T>(
     }*/
 
     fun reverse(): MutableList<T> {
-        return (elementos).asReversed()
+        val listaMod = elementos.size -1
+        val copiaLista = elementos
+        val listaReves = mutableListOf<T>()
+
+        for (i in 0..listaMod) {
+            listaReves.add(i, copiaLista.removeLast())
+        }
+        return listaReves
+        //return (elementos).asReversed()
     }
 
     override fun toString() = this.elementos.toString()
+
+    override fun recorrido(elementos: MutableList<T>) {
+        super.recorrido(elementos)
+    }
 }
+
 
 
 
