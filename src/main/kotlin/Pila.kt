@@ -49,7 +49,7 @@ fun main() {
 
     val numbers = Pila(mutableListOf<Any>("one", "two", "three", "four"))
     val numbersRev = numbers.reverse()
-    if (!listOf("four", "three", "two", "one").equals(numbersRev))
+    if (listOf("four", "three", "two", "one") != numbersRev)
         println("Error")
     else
         println("Correcto")
