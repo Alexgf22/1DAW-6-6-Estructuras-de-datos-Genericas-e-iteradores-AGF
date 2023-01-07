@@ -1,5 +1,5 @@
 class Pila<T>(
-    private val elementos: MutableList<T> = mutableListOf<T>()
+    private val elementos: MutableList<T> = mutableListOf()
 ) : Iterador<T> {
 
 
@@ -46,10 +46,8 @@ class Pila<T>(
 
     override fun toString() = this.elementos.toString()
 
-    override fun recorrido(elementos: MutableList<T>) {
-        super.recorrido(elementos)
     }
-}
+
 
 
 
