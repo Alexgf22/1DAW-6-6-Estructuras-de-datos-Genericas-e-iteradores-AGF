@@ -7,7 +7,7 @@
  */
 class Pila<T>(
     private val elementos: MutableList<T> = mutableListOf()
-) : Iterator<T> {
+) : Iterable<T> {
 
 
 
@@ -66,9 +66,7 @@ class Pila<T>(
         return sizeList() == 0 || tope() == null
     }
 
-    /*override fun iterando(elementos: MutableList<T>) {
-        super.recorrido(elementos)
-    }*/
+
     /**
      * La funcion crea una copia de la lista para ir eliminando los elementos
      * de ahi y crea otra lista donde se iran introduciendo los elementos.
@@ -78,17 +76,25 @@ class Pila<T>(
      * @return MutableList<T> devuelve la lista del reves.
      */
     fun reverse(): MutableList<T> {
-        val listaMod = elementos.size -1
+        val limite = elementos.size -1
         val copiaLista = elementos
         val listaReves = mutableListOf<T>()
 
-        for (i in 0..listaMod) {
+        for (i in 0..limite) {
+            iterator()
             listaReves.add(i, copiaLista.removeLast())
-        }
+            }
+
         return listaReves
     }
 
+    override fun iterator(): Iterator<T> {
+        return elementos.iterator()
+    }
+
+
     override fun toString() = this.elementos.toString()
+
 
     }
 
