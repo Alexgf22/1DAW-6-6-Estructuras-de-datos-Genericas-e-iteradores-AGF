@@ -81,7 +81,7 @@ class Pila<T>(
         val listaReves = mutableListOf<T>()
 
         for (i in 0..limite) {
-            iterator()
+            //iterator()
             listaReves.add(i, copiaLista.removeLast())
             }
 
