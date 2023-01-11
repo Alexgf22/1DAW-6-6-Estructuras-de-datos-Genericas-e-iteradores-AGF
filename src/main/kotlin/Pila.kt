@@ -7,7 +7,7 @@
  */
 class Pila<T>(
     private val elementos: MutableList<T> = mutableListOf()
-) : Iterador<T> {
+) : Iterator<T> {
 
 
 
