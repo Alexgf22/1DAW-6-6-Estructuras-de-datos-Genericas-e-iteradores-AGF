@@ -41,7 +41,6 @@ class Pila<T>(
             listaReves.add(i, copiaLista.removeLast())
         }
         return listaReves
-        //return (elementos).asReversed()
     }
 
     override fun toString() = this.elementos.toString()
@@ -68,6 +67,7 @@ fun main() {
 
 
     println("A continuacion se realizara la segunda prueba")
+
     /* Segunda prueba probando a meter elementos, sacar el primer elemento de la pila,
     * eliminar elemento, darle la vuelta a la pila y comprobar tambien si esta vacia */
     val primerElemento = 1

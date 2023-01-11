@@ -1,5 +1,5 @@
 interface Iterador<T> {
-    fun recorrido(elementos:MutableList<T>) {
+    fun iterando(elementos:MutableList<T>) {
         for(elemento in elementos) {
             print(elemento)
         }
