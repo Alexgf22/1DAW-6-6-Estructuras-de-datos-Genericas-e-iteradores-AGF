@@ -79,7 +79,7 @@ class Pila<T>(
 
         // Si la lista está vacía o solo queda un elemento
         if (lista.size <= 1) {
-            println("No hay elementos suficientes para darle la vuelta a la lista")
+            println("No hay elementos suficientes para poder darle la vuelta a la lista")
         }
 
         val limite = lista.size -1
