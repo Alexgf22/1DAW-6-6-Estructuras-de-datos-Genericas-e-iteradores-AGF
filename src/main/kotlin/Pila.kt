@@ -16,7 +16,7 @@ class Pila<T>(
      *
      * @return Int devuelve el numero de elementos de la lista.
      */
-    private fun sizeList() : Int = this.elementos.size
+    fun sizeList() : Int = this.elementos.size
 
 
 
@@ -37,8 +37,9 @@ class Pila<T>(
      *
      * @param elemento que puede ser de cualquier tipo.
      */
-    fun push(elemento : T) {
-        this.elementos.add(0,elemento)
+    fun push(elemento: T,indice: Int) {
+        this.elementos.add(indice,elemento)
+
     }
 
 
@@ -89,21 +90,27 @@ class Pila<T>(
  *
  * @return MutableList<T> devuelve la lista del reves.
  */
-fun <T> reverse(lista: MutableList<T>): MutableList<T> {
+fun <T> reverse(lista: MutableList<T>): Pila<T> {
 
-    val listaReves = mutableListOf<T>()
+    val lista2 = Pila(lista)
+    val listaReves = Pila(mutableListOf<T>())
+
     // Si la lista está vacía o solo queda un elemento
-    if (lista.size <= 1) {
+    if (lista2.sizeList() <= 1) {
         println("No hay elementos suficientes para poder darle la vuelta a la lista")
     }
 
 
     else {
-        val listIterator = lista.listIterator()
-        while (listIterator.hasNext()) listIterator.next()
-        while (listIterator.hasPrevious()) {
-            listaReves.add(listIterator.previous())
+        val iteradorLista = lista.listIterator()
+
+        var contador = 0
+
+        while(iteradorLista.hasNext()) {
+            listaReves.push(lista2.pop(),contador)
+            contador += 1
         }
+
     }
     return listaReves
 
@@ -124,7 +131,7 @@ fun main() {
 
     val numbersRev = reverse(numbers)
 
-    if (listOf("four","three","two","one") != numbersRev) {
+    if (Pila(mutableListOf("four","three","two","one")) != numbersRev) {
         println("Error")
     }
     else {
@@ -146,10 +153,10 @@ fun main() {
 
     val elementos = Pila(mutableListOf<Any>())
 
-    elementos.push(primerElemento)
-    elementos.push(segundoElemento)
-    elementos.push(tercerElemento)
-    elementos.push(cuartoElemento)
+    elementos.push(primerElemento,0)
+    elementos.push(segundoElemento,0)
+    elementos.push(tercerElemento,0)
+    elementos.push(cuartoElemento,0)
 
     println("El primer elemento de la Pila es: ${elementos.tope()}")
 
