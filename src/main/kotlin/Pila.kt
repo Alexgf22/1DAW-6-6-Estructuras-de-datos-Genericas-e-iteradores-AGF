@@ -1,3 +1,4 @@
+
 /**
  * La clase Pila generica le pongo de Tipo T queriendo decir de que puede ser
  * de cualquier tipo.
@@ -75,8 +76,8 @@ class Pila<T>(
      *
      * @return MutableList<T> devuelve la lista del reves.
      */
-    fun reverse(): MutableList<T> {
-        val limite = elementos.size -1
+    fun <T> reverse(lista: MutableList<T>?) {
+        /*val limite = elementos.size -1
         val copiaLista = elementos
         val listaReves = mutableListOf<T>()
 
@@ -85,7 +86,26 @@ class Pila<T>(
             listaReves.add(i, copiaLista.removeLast())
             }
 
-        return listaReves
+        return listaReves*/
+
+        // Si la lista está vacía o solo queda un elemento
+        if (lista == null || lista.size <= 1) {
+            println("No hay elementos suficientes para darle la vuelta a la lista")
+        }
+
+        // elimina el primer elemento
+        val value = lista?.removeFirst()
+
+        // recurre para los elementos que quedan
+        reverse(lista)
+
+        // inserta el elemento superior de nuevo tras repetir para los elementos restantes
+        if (value != null) {
+            lista.add(value)
+        }
+
+
+
     }
 
     override fun iterator(): Iterator<T> {
@@ -108,13 +128,18 @@ fun main() {
        a la cadena al reves pero pasandole esta vez la funcion para darle la vuelta.
      */
 
-    val numbers = Pila(mutableListOf<Any>("one", "two", "three", "four"))
-    val numbersRev = numbers.reverse()
-    if (listOf("four", "three", "two", "one") != numbersRev)
+    var numbers = Pila(mutableListOf("one", "two", "three", "four"))
+
+    //var numbersRev = numbers.reverse()
+
+    /*if (!listOf("four", "three", "two", "one").equals(numbersRev)) {
         println("Error")
-    else
+    }
+    else {
         println("Correcto")
-    println(numbersRev)
+    }
+
+    println(numbersRev)*/
 
 
     println("A continuacion se realizara la segunda prueba")
@@ -141,7 +166,7 @@ fun main() {
 
     println("El ultimo elemento de la Pila es: ${elementos.pop()}")
 
-    println("La lista al reves seria: ${elementos.reverse()}")
+    //println("La lista al reves seria: ${elementos.reverse(elementos)}")
 
 
 
