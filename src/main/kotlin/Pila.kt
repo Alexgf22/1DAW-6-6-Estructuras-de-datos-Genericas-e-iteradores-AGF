@@ -32,13 +32,13 @@ class Pila<T>(
 
 
     /**
-     * La funcion lo que hace es insertar en la lista mutable un elemento que puede
+     * La funcion lo que hace es insertar en la lista mutable en el indice 0 un elemento que puede
      * ser de cualquier tipo.
      *
      * @param elemento que puede ser de cualquier tipo.
      */
     fun push(elemento : T) {
-        this.elementos.add(elemento)
+        this.elementos.add(0,elemento)
     }
 
 
