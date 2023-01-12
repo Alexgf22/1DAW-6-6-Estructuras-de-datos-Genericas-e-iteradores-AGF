@@ -67,35 +67,6 @@ class Pila<T>(
     }
 
 
-    /**
-     * La funcion crea una copia de la lista para ir eliminando los elementos
-     * de ahi y crea otra lista donde se iran introduciendo los elementos.
-     * Despues va recorriendo los indices de lista y en cada uno mete en la lista
-     * del reves en ese mismo indice el ultimo elemento que haya en la lista copia.
-     *
-     * @return MutableList<T> devuelve la lista del reves.
-     */
-    fun <T> reverse(lista: MutableList<T>): MutableList<T> {
-
-        val listaReves = mutableListOf<T>()
-        // Si la lista está vacía o solo queda un elemento
-        if (lista.size <= 1) {
-            println("No hay elementos suficientes para poder darle la vuelta a la lista")
-        }
-
-
-        else {
-            val listIterator = lista.listIterator()
-            while (listIterator.hasNext()) listIterator.next()
-            while (listIterator.hasPrevious()) {
-                listaReves.add(listIterator.previous())
-            }
-        }
-        return listaReves
-
-
-    }
-
 
     override fun iterator(): Iterator<T> {
         return elementos.iterator()
@@ -110,6 +81,38 @@ class Pila<T>(
 
 
 
+/**
+ * La funcion crea una copia de la lista para ir eliminando los elementos
+ * de ahi y crea otra lista donde se iran introduciendo los elementos.
+ * Despues va recorriendo los indices de lista y en cada uno mete en la lista
+ * del reves en ese mismo indice el ultimo elemento que haya en la lista copia.
+ *
+ * @return MutableList<T> devuelve la lista del reves.
+ */
+fun <T> reverse(lista: MutableList<T>): MutableList<T> {
+
+    val listaReves = mutableListOf<T>()
+    // Si la lista está vacía o solo queda un elemento
+    if (lista.size <= 1) {
+        println("No hay elementos suficientes para poder darle la vuelta a la lista")
+    }
+
+
+    else {
+        val listIterator = lista.listIterator()
+        while (listIterator.hasNext()) listIterator.next()
+        while (listIterator.hasPrevious()) {
+            listaReves.add(listIterator.previous())
+        }
+    }
+    return listaReves
+
+
+}
+
+
+
+
 
 fun main() {
 
@@ -118,9 +121,8 @@ fun main() {
      */
 
     val numbers = mutableListOf("one", "two", "three", "four")
-    val numerosPila = Pila(numbers)
 
-    val numbersRev = numerosPila.reverse(numbers)
+    val numbersRev = reverse(numbers)
 
     if (listOf("four","three","two","one") != numbersRev) {
         println("Error")
@@ -134,9 +136,8 @@ fun main() {
 
     println("A continuacion se realizara la segunda prueba")
 
-    /* Segunda prueba probando a meter elementos, sacar el primer elemento de la pila,
-    * eliminar elemento, darle la vuelta a la pila y comprobar tambien si esta vacia. */
-    val elementosVariados  = mutableListOf<Any>(true,3,"hola",1)
+    /* Segunda prueba probando a meter elementos, sacar el primer elemento de la pila y
+    * eliminar elemento y ver si esta vacia */
 
     val primerElemento = 1
     val segundoElemento = "hola"
@@ -158,7 +159,7 @@ fun main() {
 
     println("El ultimo elemento de la Pila es: ${elementos.pop()}")
 
-    println("La lista al reves seria: ${elementos.reverse(elementosVariados)}")
+
 
 
 
