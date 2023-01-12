@@ -135,7 +135,7 @@ fun main() {
     println("A continuacion se realizara la segunda prueba")
 
     /* Segunda prueba probando a meter elementos, sacar el primer elemento de la pila,
-    * eliminar elemento, darle la vuelta a la pila y comprobar tambien si esta vacia */
+    * eliminar elemento, darle la vuelta a la pila y comprobar tambien si esta vacia. */
     val elementosVariados  = mutableListOf<Any>(true,3,"hola",1)
 
     val primerElemento = 1
