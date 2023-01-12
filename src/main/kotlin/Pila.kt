@@ -77,19 +77,22 @@ class Pila<T>(
      */
     fun <T> reverse(lista: MutableList<T>): MutableList<T> {
 
+        val listaReves = mutableListOf<T>()
         // Si la lista está vacía o solo queda un elemento
         if (lista.size <= 1) {
             println("No hay elementos suficientes para poder darle la vuelta a la lista")
         }
 
-        val limite = lista.size -1
-        val listaReves = mutableListOf<T>()
 
-        for (i in 0..limite) {
-            listaReves.add(i, lista.removeLast())
+        else {
+            val listIterator = lista.listIterator()
+            while (listIterator.hasNext()) listIterator.next()
+            while (listIterator.hasPrevious()) {
+                listaReves.add(listIterator.previous())
+            }
         }
-
         return listaReves
+
 
     }
 
@@ -119,7 +122,7 @@ fun main() {
 
     val numbersRev = numerosPila.reverse(numbers)
 
-    if (listOf("four", "three", "two", "one") != numbersRev) {
+    if (listOf("four","three","two","one") != numbersRev) {
         println("Error")
     }
     else {
@@ -133,6 +136,8 @@ fun main() {
 
     /* Segunda prueba probando a meter elementos, sacar el primer elemento de la pila,
     * eliminar elemento, darle la vuelta a la pila y comprobar tambien si esta vacia */
+    val elementosVariados  = mutableListOf<Any>(true,3,"hola",1)
+
     val primerElemento = 1
     val segundoElemento = "hola"
     val tercerElemento = 3
@@ -153,7 +158,7 @@ fun main() {
 
     println("El ultimo elemento de la Pila es: ${elementos.pop()}")
 
-    //println("La lista al reves seria: ${elementos.reverse(elementos)}")
+    println("La lista al reves seria: ${elementos.reverse(elementosVariados)}")
 
 
 
