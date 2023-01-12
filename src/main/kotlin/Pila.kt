@@ -1,4 +1,3 @@
-
 /**
  * La clase Pila generica le pongo de Tipo T queriendo decir de que puede ser
  * de cualquier tipo.
@@ -76,37 +75,24 @@ class Pila<T>(
      *
      * @return MutableList<T> devuelve la lista del reves.
      */
-    fun <T> reverse(lista: MutableList<T>?) {
-        /*val limite = elementos.size -1
-        val copiaLista = elementos
-        val listaReves = mutableListOf<T>()
-
-        for (i in 0..limite) {
-            //iterator()
-            listaReves.add(i, copiaLista.removeLast())
-            }
-
-        return listaReves*/
+    fun <T> reverse(lista: MutableList<T>): MutableList<T> {
 
         // Si la lista está vacía o solo queda un elemento
-        if (lista == null || lista.size <= 1) {
+        if (lista.size <= 1) {
             println("No hay elementos suficientes para darle la vuelta a la lista")
         }
 
-        // elimina el primer elemento
-        val value = lista?.removeFirst()
+        val limite = lista.size -1
+        val listaReves = mutableListOf<T>()
 
-        // recurre para los elementos que quedan
-        reverse(lista)
-
-        // inserta el elemento superior de nuevo tras repetir para los elementos restantes
-        if (value != null) {
-            lista.add(value)
+        for (i in 0..limite) {
+            listaReves.add(i, lista.removeLast())
         }
 
-
+        return listaReves
 
     }
+
 
     override fun iterator(): Iterator<T> {
         return elementos.iterator()
@@ -128,18 +114,19 @@ fun main() {
        a la cadena al reves pero pasandole esta vez la funcion para darle la vuelta.
      */
 
-    var numbers = Pila(mutableListOf("one", "two", "three", "four"))
+    val numbers = mutableListOf("one", "two", "three", "four")
+    val numerosPila = Pila(numbers)
 
-    //var numbersRev = numbers.reverse()
+    val numbersRev = numerosPila.reverse(numbers)
 
-    /*if (!listOf("four", "three", "two", "one").equals(numbersRev)) {
+    if (listOf("four", "three", "two", "one") != numbersRev) {
         println("Error")
     }
     else {
         println("Correcto")
     }
 
-    println(numbersRev)*/
+    println(numbersRev)
 
 
     println("A continuacion se realizara la segunda prueba")
