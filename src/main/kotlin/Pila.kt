@@ -22,7 +22,7 @@ class Pila<T> {
      * @return T? devuelve el elemento que se encuentra en la cabeza de la pila
      * que puede ser de cualquier tipo.
      */
-    fun tope(): T? = this.elementos.first()
+    fun tope(): T? = this.elementos.lastOrNull()
 
 
 
@@ -33,7 +33,7 @@ class Pila<T> {
      * @param elemento que puede ser de cualquier tipo.
      */
     fun push(elemento: T) {
-        this.elementos.add(elemento)
+        elementos.add(elemento)
 
     }
 
@@ -45,7 +45,7 @@ class Pila<T> {
      *
      * @return T devuelve el ultimo elemento de la pila.
      */
-    fun pop() : T = this.elementos.removeAt(this.elementos.lastIndex)
+    fun pop() : T = elementos.removeAt(elementos.lastIndex)
 
 
     /* si esta vacia (tope es nulo, o tamano es 0) o
