@@ -5,24 +5,19 @@
  * @property elementos MutableList<T>  Diversos datos que puede contener la lista
  * que pueden ser de nuevo de cualquier tipo.
  */
-class Pila<T>(
-    private val elementos: MutableList<T> = mutableListOf()
-) : Iterable<T> {
+class Pila<T> {
 
+    /* Aqui se crea la variable lista para no pasarla la lista como parametro en un constructor
+       secundario en la Pila para que no se sepa lo que contiene la Pila y de esa forma si se borra
+       la lista no se carga todos los metodos de la Pila.
 
-
-    /**
-     * Esta funcion calcula el tamano de la lista.
-     *
-     * @return Int devuelve el numero de elementos de la lista.
      */
-    fun sizeList() : Int = this.elementos.size
-
+    private val elementos: MutableList<T> = mutableListOf()
 
 
     /**
      * La funcion lo que hace es llamar al metodo first() de una lista mutable
-     * para saber cual es el elemento que se encuentra primero en la lista.
+     * para saber cual es el elemento que se encuentra primero en la pila.
      *
      * @return T? devuelve el elemento que se encuentra en la cabeza de la pila
      * que puede ser de cualquier tipo.
@@ -32,23 +27,23 @@ class Pila<T>(
 
 
     /**
-     * La funcion lo que hace es insertar en la lista mutable en el indice 0 un elemento que puede
+     * La funcion lo que hace es insertar en la pila en orden un elemento que puede
      * ser de cualquier tipo.
      *
      * @param elemento que puede ser de cualquier tipo.
      */
-    fun push(elemento: T,indice: Int) {
-        this.elementos.add(indice,elemento)
+    fun push(elemento: T) {
+        this.elementos.add(elemento)
 
     }
 
 
 
     /**
-     * La funcion lo que hace es sacar de la lista el elemento que se encuentra
+     * La funcion lo que hace es sacar de la pila el elemento que se encuentra
      * en el ultimo indice.
      *
-     * @return T devuelve el ultimo elemento de la lista.
+     * @return T devuelve el ultimo elemento de la pila.
      */
     fun pop() : T = this.elementos.removeAt(this.elementos.lastIndex)
 
@@ -57,21 +52,17 @@ class Pila<T>(
        llena (si existe tamano maximo)
     */
     /**
-     * La funcion comprueba llamando a la funcion sizeList() si el tamano de la
-     * lista es 0 o si la funcion tope() es nula .
+     * La funcion comprueba  si el tamano de la
+     * pila es 0 o si la funcion tope() es nula .
      *
      * @return Boolean devuelve true si se cumple alguna de las 2 condiciones
      * mencionadas anteriormente. En caso contrario, devuelve false.
      */
     fun vacia(): Boolean {
-        return sizeList() == 0 || tope() == null
+        //return sizeList() == 0 || tope() == null
+        return elementos.isEmpty()
     }
 
-
-
-    override fun iterator(): Iterator<T> {
-        return elementos.iterator()
-    }
 
 
     override fun toString() = this.elementos.toString()
@@ -83,35 +74,36 @@ class Pila<T>(
 
 
 /**
- * La funcion crea una copia de la lista para ir eliminando los elementos
- * de ahi y crea otra lista donde se iran introduciendo los elementos.
- * Despues va recorriendo los indices de lista y en cada uno mete en la lista
- * del reves en ese mismo indice el ultimo elemento que haya en la lista copia.
+ *
  *
  * @return MutableList<T> devuelve la lista del reves.
  */
-fun <T> reverse(lista: MutableList<T>): Pila<T> {
+fun <T> reverse(lista: MutableList<T>): MutableList<T> {
 
-    val lista2 = Pila(lista)
-    val listaReves = Pila(mutableListOf<T>())
+    // Aqui se crea la Pila vacia para hacer uso de los metodos que tiene
+    val pila = Pila<T>()
+
+    val listaReves = mutableListOf<T>()
 
     // Si la lista está vacía o solo queda un elemento
-    if (lista2.sizeList() <= 1) {
+    if (lista.size <= 1) {
         println("No hay elementos suficientes para poder darle la vuelta a la lista")
     }
 
 
     else {
-        val iteradorLista = lista.listIterator()
-
-        var contador = 0
-
-        while(iteradorLista.hasNext()) {
-            listaReves.push(lista2.pop(),contador)
-            contador += 1
+        val iterator = lista.iterator()
+        while (iterator.hasNext()) {
+            pila.push(iterator.next())
         }
 
+        lista.forEach { _ ->
+            listaReves.add(pila.pop())
+        }
+
+
     }
+
     return listaReves
 
 
@@ -131,7 +123,7 @@ fun main() {
 
     val numbersRev = reverse(numbers)
 
-    if (Pila(mutableListOf("four","three","two","one")) != numbersRev) {
+    if (listOf("four","three","two","one") != numbersRev) {
         println("Error")
     }
     else {
@@ -142,30 +134,6 @@ fun main() {
 
 
     println("A continuacion se realizara la segunda prueba")
-
-    /* Segunda prueba probando a meter elementos, sacar el primer elemento de la pila y
-    * eliminar elemento y ver si esta vacia */
-
-    val primerElemento = 1
-    val segundoElemento = "hola"
-    val tercerElemento = 3
-    val cuartoElemento = true
-
-    val elementos = Pila(mutableListOf<Any>())
-
-    elementos.push(primerElemento,0)
-    elementos.push(segundoElemento,0)
-    elementos.push(tercerElemento,0)
-    elementos.push(cuartoElemento,0)
-
-    println("El primer elemento de la Pila es: ${elementos.tope()}")
-
-    println(elementos.vacia())
-
-    println(elementos)
-
-    println("El ultimo elemento de la Pila es: ${elementos.pop()}")
-
 
 
 
