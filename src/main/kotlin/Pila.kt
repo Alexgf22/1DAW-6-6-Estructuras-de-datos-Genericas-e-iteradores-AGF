@@ -45,7 +45,7 @@ class Pila<T> {
      *
      * @return T devuelve el ultimo elemento de la pila.
      */
-    fun pop() : T = elementos.removeAt(elementos.lastIndex)
+    fun pop() : T? = elementos.removeLastOrNull()
 
 
     /* si esta vacia (tope es nulo, o tamano es 0) o
@@ -98,7 +98,8 @@ fun <T> reverse(lista: MutableList<T>): MutableList<T> {
         }
 
         lista.forEach { _ ->
-            listaReves.add(pila.pop())
+            // Comprueba si es nulo o no para permitir meter el elemento en la listaReves
+            pila.pop()?.let { listaReves.add(it) }
         }
 
 
