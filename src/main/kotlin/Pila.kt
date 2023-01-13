@@ -22,7 +22,7 @@ class Pila<T> {
      * @return T? devuelve el elemento que se encuentra en la cabeza de la pila
      * que puede ser de cualquier tipo.
      */
-    fun tope(): T? = this.elementos.lastOrNull()
+    fun tope(): T? = elementos.lastOrNull()
 
 
 
@@ -65,7 +65,7 @@ class Pila<T> {
 
 
 
-    override fun toString() = this.elementos.toString()
+    override fun toString() = elementos.toString()
 
 
     }
